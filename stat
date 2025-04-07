@@ -1,0 +1,34 @@
+import numpy as np
+import matplotlib.pyplot as plt
+from scipy.stats import norm
+
+# Fonction pour les exercices 1 à 10
+def exercise_solutions():
+    # Exercice 1
+    n = 200
+    p = 0.5
+    mu = n * p
+    sigma = np.sqrt(n * p * (1 - p))
+    z1 = (90.5 - mu) / sigma
+    z2 = (110.5 - mu) / sigma
+    p_90_to_110 = norm.cdf(z2) - norm.cdf(z1)
+    print(f"Exercice 1: P(90 <= X <= 110) = {p_90_to_110:.4f}")
+
+    # Exercice 2
+    # 0.10 corresponds to z1 = -1.28 and 0.90 corresponds to z2 = 1.28
+    z1 = norm.ppf(0.10)
+    z2 = norm.ppf(0.90)
+    mu_2 = (85 + 115) / 2
+    sigma_2 = (115 - 85) / (z2 - z1)
+    print(f"Exercice 2: mu = {mu_2:.2f}, sigma = {sigma_2:.2f}")
+
+    # Exercice 3
+    n_samples = 1000
+    expected_max = mu + sigma * norm.ppf(1 - 1/n_samples)
+    print(f"Exercice 3: Expected max of 1000 samples = {expected_max:.2f}")
+
+    # Exercice 4
+    # Find x such that P(X > x) = 0.01
+    z_4 = norm.ppf(0.99)
+    x_4 = 50 + 8 * z_4
+    print(f"Exercice 4: x
